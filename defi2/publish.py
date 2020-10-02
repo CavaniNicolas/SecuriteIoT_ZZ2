@@ -23,7 +23,7 @@ client.on_publish = on_publish
 
 try:
 	# client.username_pw_set(username="ZZ_HSH", password="WIFI_ZZ_F5")
-	client.connect("172.16.32.8", 10801)
+	client.connect("172.16.32.8", 10803)
 
 except:
 	print("Connection Failed")
@@ -32,7 +32,12 @@ except:
 client.loop_start()
 
 while True:
-	(rc, mid) = client.publish(topic="/ISIMA/SECRET_NGOKUCACILE/CHALLENGE_1/DEFI_1/GROUPE_CAVANI/LEDS/LED2", payload="ON", qos=0)
+	(rc, mid) = client.publish(topic="/ISIMA/SECRET_NGAKUWE/CHALLENGE_1/DEFI_2/GROUPE_CAVANI/LEDS/LED2", payload="ON", qos=0)
 	print("Error return from publish of mid = " + str(mid) +" : " + mqtt.error_string(rc))
 	time.sleep(5)
+
+
+# defi 1
+# "/ISIMA/SECRET_NGOKUCACILE/CHALLENGE_1/DEFI_2/GROUPE_CAVANI/LEDS/LED2"
+
 
