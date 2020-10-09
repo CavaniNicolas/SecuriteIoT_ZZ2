@@ -13,3 +13,5 @@ if __name__ == '__main__':
     print (toCdecl(Xor("TRAVAUX PRATIQUES ISIMA", "F5")))
     print (toCdecl(Xor("TRAVAUX PRATIQUES ISIMA", "ZZ2_F5")))
     print (toCdecl(Xor("ZZ2_F5", "F5")))
+
+    print (toCdecl(Xor("/ISIMA", "KEY")))
