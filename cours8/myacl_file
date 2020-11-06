@@ -1,0 +1,11 @@
+# Give users access to everything with their username
+pattern write /isima/%u
+pattern read /isima/%u
+
+# Give user G121 full access to everything
+#user G121
+#topic writeread /#
+
+# Give user G122 full access to everything
+#user G122
+#topic read /#
