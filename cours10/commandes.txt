@@ -1,0 +1,36 @@
+
+# see: https://test.mosquitto.org/
+
+# connect, subscribe and publish on mosquitto.org
+mosquitto_sub -h test.mosquitto.org -t "secIoTZZ2/#" -v
+mosquitto_pub -h test.mosquitto.org -t secIoTZZ2/cours10 -m "le message est lalala"
+
+
+# Generate a CSR using the openssl utility
+# Generate a private key:
+openssl genrsa -out client.key
+
+# Generate the CSR:
+openssl req -out client.csr -key client.key -new
+
+# on https://test.mosquitto.org/ssl/index.php paste the CSR file to generate the .crt
+
+
+# mot de passe utilisé : 1s1MA1s1MA1s1MAs
+# ces fichiers seront rangés dans /etc/mosquitto
+
+# Génération de la clef de l'autorité de certification:
+openssl genrsa -aes256 -out ca.key 2048
+
+# Production d'un certificat auto-signé
+openssl req -new -x509 -days 10 -key ca.key -out ca.crt
+
+# Génération d'une clef pour le broker
+openssl genrsa -out serveur.key 2048
+
+# Génération du certificat du broker ( serveur )
+openssl req -new -out serveur.csr -key serveur.key
+openssl x509 -req -in serveur.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out serveur.crt -days 10
+
+
+# doc pour configurer mosquitto https://mosquitto.org/man/mosquitto-tls-7.html
